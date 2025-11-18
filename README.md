@@ -1,5 +1,5 @@
 # SPARK
-# Hadoop Introduction:
+# 1 Hadoop Introduction:
 Hadoop is an open-source framework used to store and process large-scale data (Big Data) across a cluster of computers using distributed computing.
 # Key Purpose of Hadoop
 # Hadoop solves three big problems of Big Data:
@@ -111,7 +111,7 @@ Can scale from a single laptop to thousands of cluster nodes.
 # 7 Works with Hadoop Ecosystem
 Compatible with HDFS, YARN, Hive, HBase, etc.
 
-# Comparison: Apache Spark vs Hadoop MapReduce
+# 2 Comparison: Apache Spark vs Hadoop MapReduce
 | Feature              | **Apache Spark**                     | **Hadoop MapReduce**         |
 | -------------------- | ------------------------------------ | ---------------------------- |
 | **Processing Speed** | Very fast (in-memory)                | Slow (disk-based)            |
@@ -134,3 +134,108 @@ Widely used for ML, streaming, analytics
 Disk-based batch processing
 Slower and older technology
 Good for long-running, heavy batch jobs
+
+# 3 Spark Architecture Overview:
+3.1 Understanding the Key Components of the Spark Architecture. Below are the main components of the Spark architecture:
+# Spark Architecture Diagram 
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/f4f29aa3-9b94-4bd1-8db5-f82dfb53d08e" />
+
+# 1 Driver Program
+The main control process of a Spark application.
+Contains the SparkContext which coordinates all activities.
+# Responsible for:
+Converting the user program into tasks
+Scheduling tasks
+Tracking job progress
+Communicating with the cluster manager
+
+# 2 SparkContext
+The “heart” of any Spark application.
+Creates RDDs, accumulators, broadcast variables.
+Connects the Driver with the Cluster Manager.
+
+# 3 Cluster Manager
+Responsible for providing resources (CPU, memory) to run Spark jobs.
+Spark can work with:
+Standalone cluster manager (default)
+YARN (Hadoop)
+Mesos
+Kubernetes
+
+# 4 Executors
+Worker processes launched on each cluster node.
+Executed tasks sent by the Driver.
+Store data in memory through caching.
+Perform actual computation on RDDs/DataFrames.
+
+# 5 Worker Nodes
+Machines in the cluster where Executors run.
+Each worker can run multiple executors.
+
+# 6 Tasks
+The smallest unit of work in Spark.
+Each task performs operations on a partition of data.
+
+# 7 RDD / DataFrame / Dataset
+Distributed data abstractions.
+RDD → low-level distributed collections
+DataFrame/Dataset → high-level structured data
+
+# Summary of Components
+| Component       | Role                                |
+| --------------- | ----------------------------------- |
+| Driver          | Controls execution, schedules tasks |
+| SparkContext    | Connects driver & cluster manager   |
+| Cluster Manager | Allocates resources                 |
+| Executors       | Run tasks & store data              |
+| Worker Nodes    | Machines running executors          |
+| Tasks           | Small units of execution            |
+| RDD/DataFrame   | Distributed data                    |
+
+# 3.2 Interaction Between Components During Execution
+Here is the step-by-step flow of how a Spark application runs:
+
+#  Step 1: Application Starts
+User runs the program (PySpark, Scala, etc.).
+The Driver Program starts and creates a SparkContext.
+
+# Step 2: SparkContext Connects to Cluster Manager
+SparkContext requests resources (CPU, memory).
+Cluster manager finds suitable worker nodes.
+
+#  Step 3: Executors Are Launched
+Cluster manager assigns worker nodes to run executors.
+Executors register themselves with the driver.
+
+# Step 4: Driver Divides the Job into Stages & Tasks
+Spark breaks RDD/DataFrame transformations into DAG (Directed Acyclic Graph).
+DAG → converted into stages
+Stages → broken into tasks based on data partitions
+
+# Step 5: Tasks Are Sent to Executors
+Executors run tasks in parallel across the cluster.
+
+# Step 6: Executors Perform Computation
+Read input data
+Execute transformations
+Store intermediate data in memory (cache)
+Write results back to the driver or storage
+
+#  Step 7: Driver Collects Results
+Finally, the driver program collects results and displays output.
+
+# Interaction Flow Diagram (Text Explanation)
+User Program → Driver Program → SparkContext → Cluster Manager → Executors 
+→ Execute Tasks → Return Results → Driver → Output
+
+# Easy Summary
+* Driver
+Controls everything.
+* SparkContext
+Connects driver to cluster.
+* Cluster Manager
+Allocates resources.
+* Executors
+Do the real work.
+* Tasks
+Small pieces of work executed on executors.
