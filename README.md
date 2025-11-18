@@ -87,29 +87,31 @@ It provides high-speed performance using in-memory computation, which makes it m
 *Cloud platforms (AWS, Azure, GCP)
 
 Advantages of Apache Spark
-1️⃣ Very Fast (In-Memory Processing)
-Spark keeps data in RAM instead of reading/writing to disk repeatedly.
+ # 1 Very Fast (In-Memory Processing)
+ Spark keeps data in RAM instead of reading/writing to disk repeatedly.
 This makes Spark up to 100x faster than MapReduce.
-2️⃣ Unified Platform
+
+# 2 Unified Platform
 Spark supports many tasks in one framework:
 Spark SQL (SQL queries)
 Spark Streaming (real-time data)
 MLlib (machine learning)
 GraphX (graph processing)
-3️⃣ Easy to Use
+
+# 3 Easy to Use
 Supports Python (PySpark), Scala, Java, R, and SQL.
 Easy APIs → fewer lines of code.
-4️⃣ Real-Time Processing
+# 4 Real-Time Processing
 Unlike MapReduce, Spark supports real-time data streams.
-5️⃣ Fault Tolerant
+# 5 Fault Tolerant
 Uses RDDs (Resilient Distributed Datasets) with lineage information.
 Automatically recovers lost data.
-6️⃣ Scalable
+# 6 Scalable
 Can scale from a single laptop to thousands of cluster nodes.
-7️⃣ Works with Hadoop Ecosystem
+# 7 Works with Hadoop Ecosystem
 Compatible with HDFS, YARN, Hive, HBase, etc.
 
-Comparison: Apache Spark vs Hadoop MapReduce
+# Comparison: Apache Spark vs Hadoop MapReduce
 | Feature              | **Apache Spark**                     | **Hadoop MapReduce**         |
 | -------------------- | ------------------------------------ | ---------------------------- |
 | **Processing Speed** | Very fast (in-memory)                | Slow (disk-based)            |
