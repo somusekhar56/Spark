@@ -239,3 +239,61 @@ Allocates resources.
 Do the real work.
 * Tasks
 Small pieces of work executed on executors.
+
+# Core Concepts in Spark:
+2.1 RDD (Resilient Distributed Dataset): Immutable distributed collections of objects.
+The fundamental data structure in Spark.An immutable, distributed collection of objects.
+# Supports:
+Fault tolerance
+Parallel processing
+Lazy evaluation
+# RDDs are processed using:
+Transformations (map, filter, flatMap)
+Actions (collect, count, reduce)
+
+# 2.2 Spark Core: The foundation of the Spark platform.The base engine of the Spark platform.
+# Provides:
+Memory management
+Task scheduling
+Fault recovery
+RDD operations
+All other Spark modules (SQL, Streaming, MLlib, GraphX) run on top of Spark Core.
+
+# 2.3 Spark SQL: Spark module for structured data processing.
+Used for processing structured and semi-structured data.
+# Provides:
+DataFrames
+Datasets
+SQL query support
+
+# 2.4 Spark Streaming: Real-time data processing 
+Module for real-time data processing.Processes live data streams from:
+Kafka ,Flume ,Socket streams
+# Two APIs:
+DStreams (older)
+Structured Streaming (modern)
+Used for applications like real-time dashboards and fraud detection.
+
+# 2.5 MLlib (Machine Learning Library): Machine learning library for Spark.
+Spark’s built-in machine learning library.
+# Supports:
+Classification
+Regression
+Clustering
+Recommendation systems
+Feature extraction
+ML Pipelines
+Designed for distributed machine learning on large datasets.
+
+# 2.6 GraphX: Graph processing library for Spark.
+# Used to work with:
+Graph data
+Network structures
+Social network analysis
+# Provides:
+Pre-built algorithms (PageRank, Connected Components)
+Graph operators
+Supports both graph and RDD APIs.
+
+
+
